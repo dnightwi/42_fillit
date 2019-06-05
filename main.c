@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:13:15 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/05/06 17:13:17 by dnightwi         ###   ########.fr       */
+/*   Updated: 2019/06/05 15:38:00 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		main(int argc, char **argv)
 	cor[0] = 0;
 	cor[1] = 0;
 	side_len = 4;
+	map = NULL;
 	if (argc == 2)
 	{
 		if (!(tetr = op_wr(argv[1])))

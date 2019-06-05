@@ -6,7 +6,7 @@
 #    By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 17:55:34 by dnightwi          #+#    #+#              #
-#    Updated: 2019/04/11 16:58:43 by dnightwi         ###   ########.fr        #
+#    Updated: 2019/06/05 15:41:24 by rsticks          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ DOTO = *.o
 
 all: $(NAME)
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC)
+	gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEAD)
 	ar rc $(NAME) $(DOTO)
 	ranlib $(NAME)
 clean:

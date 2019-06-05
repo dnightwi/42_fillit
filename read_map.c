@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:52:19 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/05/06 16:52:22 by dnightwi         ###   ########.fr       */
+/*   Updated: 2019/06/05 15:39:39 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ char		**del_empty_column(char **line)
 t_lst		*create_elem(char *map)
 {
 	t_lst	*new;
-	int		i;
 
 	new = (t_lst *)malloc(sizeof(t_lst));
 	new->str = ft_strsplit(map, '\n');

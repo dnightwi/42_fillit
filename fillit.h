@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:16:51 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/05/06 18:16:54 by dnightwi         ###   ########.fr       */
+/*   Updated: 2019/06/05 15:39:18 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					get_next_line(int fd, char **line,
 					t_lst **map, t_lst **tmp);
 int					check_figure(char *str);
 t_lst				*create_elem(char *map);
-static char			*change_sym(char *str);
+//static char			*change_sym(char *str);
 int					valid_check(char *map);
 int					check_map(char *lne);
 //char				**create_map(int n, char **map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 16:31:45 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/05/18 16:31:50 by dnightwi         ###   ########.fr       */
+/*   Updated: 2019/06/05 18:07:33 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 **finds spot on the map with given coordinats
 **num[0] - y coor for the map, num[1] - x coor for the map, num[2] - x coor for the figure map, num[3] - counts how many symbols could be pasted
 */
+
+void	ft_intdel(int **as)
+{
+	if (as != NULL)
+	{
+		free(*as);
+		*as = NULL;
+	}
+}
 
 int		find_spot(char **map, char **tetr, int x, int y)
 {
@@ -159,7 +168,6 @@ char	**write_fig(char **map, char **tetr, int *cor)
 int		add(t_lst *fig, char ***map, int side_len, int *c)
 {
 	int		*cor;
-	char	**tetr;
 
 	cor = (int*)malloc(sizeof(int) * 2);
 	cor[0] = c[0];
@@ -173,12 +181,19 @@ int		add(t_lst *fig, char ***map, int side_len, int *c)
 		if (check_next(fig->next->str, *map, side_len))
 		{
 			*map = remove_fig(*map, fig->sym);
-			return (1);
+			{
+				ft_intdel(&cor);
+				return (1);	
+			}
 		}
 		cor[0] = 0;
 		cor[1] = 0;
 		if (fill_map(fig->next, map, side_len, cor))
+		{
+			ft_intdel(&cor);
 			return (1);
+		}
+		ft_intdel(&cor);
 	}
 	return (0);
 }

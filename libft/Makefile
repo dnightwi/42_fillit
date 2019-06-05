@@ -20,7 +20,7 @@ DOTO = *.o
 
 all: $(NAME)
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEAD)
+	gcc -Wall -Wextra -Werror -c $(SRC)
 	ar rc $(NAME) $(DOTO)
 	ranlib $(NAME)
 clean:

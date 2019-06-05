@@ -34,7 +34,7 @@ t_lst				*create_elem(char *map);
 static char			*change_sym(char *str);
 int					valid_check(char *map);
 int					check_map(char *lne);
-char				**create_map(int n);
+//char				**create_map(int n, char **map);
 int					fill_map(t_lst *fig, char ***map, int side_len, int *cor);
 char				*del_empty_line(char *line);
 char				**del_empty_column(char **line);

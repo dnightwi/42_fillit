@@ -16,11 +16,23 @@
 **create map of n size
 */
 
-char	**create_map(int n)
+void	free_it(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+char	**create_map(int n, char **map)
 {
 	int		i;
 	int		j;
-	char	**map;
 
 	i = 0;
 	map = (char **)malloc(sizeof(char *) * n + 1);
@@ -74,15 +86,17 @@ int		main(int argc, char **argv)
 			write(1, "error\n", 6);
 			return (0);
 		}
-		map = create_map(side_len);
+		map = create_map(side_len, map);
 		while (fill_map(tetr, &map, side_len, cor))
 		{
+			free_it(map);
 			cor[0] = 0;
 			cor[1] = 0;
 			side_len++;
-			map = create_map(side_len);
+			map = create_map(side_len, map);
 		}
 		print_res(map);
+		free_it(map);
 	}
 	else
 		write(1, "error\n", 6);

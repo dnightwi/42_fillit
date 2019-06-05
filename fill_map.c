@@ -6,7 +6,7 @@
 /*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 16:31:45 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/06/05 18:07:33 by rsticks          ###   ########.fr       */
+/*   Updated: 2019/06/05 18:57:52 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,10 @@ int		add(t_lst *fig, char ***map, int side_len, int *c)
 	cor[1] = c[1];
 	cor = find_cors(map, fig, cor, side_len);
 	if (cor[0] == -1)
-		return (1);
+	{
+		ft_intdel(&cor);
+		return (1);	
+	}
 	*map = write_fig(*map, fig->str, cor);
 	if (fig->next)
 	{

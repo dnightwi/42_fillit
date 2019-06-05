@@ -21,7 +21,7 @@ void	free_it(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i + 1])
 	{
 		free(str[i]);
 		i++;
@@ -65,6 +65,20 @@ void	print_res(char **map)
 	}
 }
 
+void	free_lst(t_lst *trash)
+{
+	t_lst	*tmp;
+
+	while (trash->next)
+	{
+		tmp = trash;
+		free_it(trash->str);
+		trash = trash->next;
+		if (tmp)
+			free(tmp);
+	}
+}
+
 /*
 **main function where all magic happens
 */
@@ -98,6 +112,7 @@ int		main(int argc, char **argv)
 		}
 		print_res(map);
 		free_it(map);
+		free_lst(tetr);
 	}
 	else
 		write(1, "error\n", 6);

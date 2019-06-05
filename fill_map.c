@@ -168,6 +168,7 @@ char	**write_fig(char **map, char **tetr, int *cor)
 int		add(t_lst *fig, char ***map, int side_len, int *c)
 {
 	int		*cor;
+	int		tmp[2];
 
 	cor = (int*)malloc(sizeof(int) * 2);
 	cor[0] = c[0];
@@ -179,24 +180,18 @@ int		add(t_lst *fig, char ***map, int side_len, int *c)
 		return (1);	
 	}
 	*map = write_fig(*map, fig->str, cor);
+	ft_intdel(&cor);
 	if (fig->next)
 	{
 		if (check_next(fig->next->str, *map, side_len))
 		{
 			*map = remove_fig(*map, fig->sym);
-			{
-				ft_intdel(&cor);
 				return (1);	
-			}
 		}
-		cor[0] = 0;
-		cor[1] = 0;
-		if (fill_map(fig->next, map, side_len, cor))
-		{
-			ft_intdel(&cor);
+		tmp[0] = 0;
+		tmp[1] = 0;
+		if (fill_map(fig->next, map, side_len, tmp))
 			return (1);
-		}
-		ft_intdel(&cor);
 	}
 	return (0);
 }

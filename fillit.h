@@ -26,7 +26,7 @@ typedef struct		s_lst
 	struct s_lst	*next;
 }					t_lst;
 
-t_lst				*op_wr(char *file);
+t_lst				*op_wr(char *file, char *line);
 int					get_next_line(int fd, char **line,
 					t_lst **map, t_lst **tmp);
 int					check_figure(char *str);

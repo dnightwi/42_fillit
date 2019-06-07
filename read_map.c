@@ -99,16 +99,18 @@ char		**del_empty_column(char **line)
 
 t_lst		*create_elem(char *map)
 {
-	t_lst	*new;
+	t_lst		*new;
+	static int	check = 0;
 
 	new = (t_lst *)malloc(sizeof(t_lst));
-	new->str = ft_strsplit(map, '\n');
-	if (new->str[0])
+	if (check)
 	{
+		new->str = ft_strsplit(map, '\n');
 		new->str = del_empty_column(new->str);
 		find_sym(new);
 	}
 	new->next = NULL;
+	check++;
 	return (new);
 }
 

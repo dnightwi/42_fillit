@@ -21,9 +21,10 @@ void	free_it(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i + 1])
+	while (str[i])
 	{
 		free(str[i]);
+		//ft_strdel(&str[i]);
 		i++;
 	}
 	free(str);
@@ -68,12 +69,21 @@ void	print_res(char **map)
 void	free_lst(t_lst *trash)
 {
 	t_lst	*tmp;
+	char	**arr;
+	int		i;
 
-	while (trash->next)
+	while (trash)
 	{
 		tmp = trash;
-		free_it(trash->str);
 		trash = trash->next;
+		arr = tmp->str;
+		while (ft_strlen(arr[0]) != 4)
+			{
+				i = 0;
+				while (arr[i])
+					arr[i++]--;
+			}
+		free_it(arr);
 		if (tmp)
 			free(tmp);
 	}
@@ -89,6 +99,7 @@ int		main(int argc, char **argv)
 	int		cor[2];
 	char	**map;
 	t_lst	*tetr;
+	char	*line;
 
 	cor[0] = 0;
 	cor[1] = 0;
@@ -96,7 +107,7 @@ int		main(int argc, char **argv)
 	map = NULL;
 	if (argc == 2)
 	{
-		if (!(tetr = op_wr(argv[1])))
+		if (!(tetr = op_wr(argv[1], line)))
 		{
 			write(1, "error\n", 6);
 			return (0);
@@ -110,6 +121,7 @@ int		main(int argc, char **argv)
 			side_len++;
 			map = create_map(side_len, map);
 		}
+		//free(line);
 		print_res(map);
 		free_it(map);
 		free_lst(tetr);

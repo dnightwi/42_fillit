@@ -114,31 +114,31 @@ static char	*change_sym(char *str)
 ** one cycle works with one figure from input file: check is valid, and write it in the chained list
 */
 
-t_lst		*op_wr(char *file)
+t_lst		*op_wr(char *file, char *line)
 {
-	char	*line;
 	t_lst	*map;
 	t_lst	*tmp;
-	char	*string;
+	char	string[20];
 	int		i;
+	int		j;
 
 	if (get_next_line(open(file, O_RDONLY), &line, &map, &tmp))
 		return (NULL);
-	while (*line)
+	j = 0;
+	while (line[j])
 	{
 		i = 0;
-		string = (char *)malloc(sizeof(char) * 20);
 		while (i < 20)
-			string[i++] = *(line++);
+			string[i++] = line[j++];
 		string[i] = '\0';
 		if (check_figure(string) || !(valid_check(string)))
 			return (NULL);
 		map->next = create_elem(change_sym(string));
 		map = map->next;
-		free(string);
-		if (*(line++) == '\0')
+		if (line[j++] == '\0')
 			break ;
 	}
+	free(line);
 	tmp = tmp->next;
 	return (tmp);
 }

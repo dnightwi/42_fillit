@@ -55,9 +55,9 @@ char			**ft_strsplit(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
-		res[j] = (char *)malloc(sizeof(char) * (ft_sizeof_str(s + i, c)));
 		if (ft_sizeof_str(s + i, c) == 0)
 			continue;
+		res[j] = (char *)malloc(sizeof(char) * (ft_sizeof_str(s + i, c)));
 		k = 0;
 		while (s[i] != c && s[i])
 			res[j][k++] = s[i++];

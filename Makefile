@@ -5,26 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/04 17:55:34 by dnightwi          #+#    #+#              #
-#    Updated: 2019/06/11 16:48:20 by dnightwi         ###   ########.fr        #
+#    Created: 2019/06/11 16:33:54 by dnightwi          #+#    #+#              #
+#    Updated: 2019/06/11 16:33:59 by dnightwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+OUT = fillit
+SRCS = srcs/*.c
+HEAD = include/
+MYLIB = libft/
 
-SRC = ft_*
-
-HEAD = libft.h
-
-DOTO = *.o
-
-all: $(NAME)
-$(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC)
-	ar rc $(NAME) $(DOTO)
-	ranlib $(NAME)
+all: $(OUT)
+$(OUT):
+	make -C $(MYLIB)
+	gcc -Wall -Wextra -Werror $(SRCS) -I $(HEAD) -L $(MYLIB) -lft -o $(OUT)
 clean:
-	/bin/rm -f $(DOTO)
+	make fclean -C $(MYLIB)
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -rf $(OUT)
 re: fclean all

@@ -12,12 +12,7 @@
 
 #include "fillit.h"
 
-/*
-**finds symbol that figure consist of and writes it in the chained list
-**this needs for programm work
-*/
-
-void	find_sym(t_lst *figs)
+static void		find_sym(t_lst *figs)
 {
 	int i;
 
@@ -33,38 +28,7 @@ void	find_sym(t_lst *figs)
 	}
 }
 
-/*
-**if line only has dots (.) deletes this line
-*/
-
-char		*del_empty_line(char *line)
-{
-	int	i;
-	int	check;
-
-	i = 0;
-	check = 1;
-	while (line[i] != '\n' && line[i] != '\0')
-	{
-		if (line[i] != '.')
-			check = 0;
-		i++;
-	}
-	if (check)
-	{
-		while (*line == '.')
-			line++;
-		line++;
-		line = del_empty_line(line);
-	}
-	return (line);
-}
-
-/*
-**same as previos, but for columns
-*/
-
-char		**del_empty_column(char **line)
+static char		**del_empty_column(char **line)
 {
 	int	i;
 	int	check;
@@ -93,11 +57,7 @@ char		**del_empty_column(char **line)
 	return (line);
 }
 
-/*
-**creates list, str consist figure, sym - symbol that previously was changed from hashs (#) to sym A-Z
-*/
-
-t_lst		*create_elem(char *map)
+t_lst			*create_elem(char *map)
 {
 	t_lst		*new;
 	static int	check = 0;
@@ -114,11 +74,30 @@ t_lst		*create_elem(char *map)
 	return (new);
 }
 
-/*
-**checks if figure is valid, counts side connections
-*/
+char			*del_empty_line(char *line)
+{
+	int	i;
+	int	check;
 
-int			valid_check(char *map)
+	i = 0;
+	check = 1;
+	while (line[i] != '\n' && line[i] != '\0')
+	{
+		if (line[i] != '.')
+			check = 0;
+		i++;
+	}
+	if (check)
+	{
+		while (*line == '.')
+			line++;
+		line++;
+		line = del_empty_line(line);
+	}
+	return (line);
+}
+
+int				valid_check(char *map)
 {
 	int			count;
 	int			i;

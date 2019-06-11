@@ -12,11 +12,7 @@
 
 #include "fillit.h"
 
-/*
-**checks if map with figure has correct end and spaces betwen figures
-*/
-
-int			check_map(char *lne)
+static int	check_map(char *lne)
 {
 	int i;
 
@@ -31,11 +27,7 @@ int			check_map(char *lne)
 	return (0);
 }
 
-/*
-**reads file from standart input and creates line, that consist all text from input file
-*/
-
-int			get_next_line(int fd, char **line, t_lst **map, t_lst **tmp)
+static int	get_next_line(int fd, char **line, t_lst **map, t_lst **tmp)
 {
 	char	*buf;
 	char	*tmpp;
@@ -61,11 +53,7 @@ int			get_next_line(int fd, char **line, t_lst **map, t_lst **tmp)
 	return (0);
 }
 
-/*
-**checks if one figure has 4 hashs(#), 5 new lines (\n) and 20 elements at all
-*/
-
-int			check_figure(char *str)
+static int	check_figure(char *str)
 {
 	int	i;
 	int	hash;
@@ -89,10 +77,6 @@ int			check_figure(char *str)
 	return (0);
 }
 
-/*
-**changes hashs to symbol from A to Z
-*/
-
 static char	*change_sym(char *str)
 {
 	int			i;
@@ -108,11 +92,6 @@ static char	*change_sym(char *str)
 	sym++;
 	return (str);
 }
-
-/*
-** function works with line, that consist all text from input file
-** one cycle works with one figure from input file: check is valid, and write it in the chained list
-*/
 
 t_lst		*op_wr(char *file, char *line)
 {

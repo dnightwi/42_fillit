@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct		s_lst
 {
@@ -27,16 +27,11 @@ typedef struct		s_lst
 }					t_lst;
 
 t_lst				*op_wr(char *file, char *line);
-int					get_next_line(int fd, char **line,
-					t_lst **map, t_lst **tmp);
-int					check_figure(char *str);
 t_lst				*create_elem(char *map);
-//static char			*change_sym(char *str);
+int					fill_map(t_lst *fig, char ***map, int side_len);
 int					valid_check(char *map);
-int					check_map(char *lne);
-//char				**create_map(int n, char **map);
-int					fill_map(t_lst *fig, char ***map, int side_len, int *cor);
+char				**remove_fig(char **map, char sym);
+char				**write_fig(char **map, char **tetr, int *cor);
 char				*del_empty_line(char *line);
-char				**del_empty_column(char **line);
 
 #endif

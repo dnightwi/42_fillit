@@ -6,7 +6,7 @@
 /*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 17:13:15 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/06/05 15:38:00 by rsticks          ###   ########.fr       */
+/*   Updated: 2019/06/13 18:06:31 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int			main(int argc, char **argv)
 
 	map = NULL;
 	line = NULL;
-	side_len = 4;
+	side_len = 2;
 	if (argc == 2)
 	{
 		if (!(tetr = op_wr(argv[1], line)))

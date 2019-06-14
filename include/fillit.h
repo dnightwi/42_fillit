@@ -6,7 +6,7 @@
 /*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 18:16:51 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/06/05 15:39:18 by rsticks          ###   ########.fr       */
+/*   Updated: 2019/06/13 18:06:43 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_lst				*op_wr(char *file, char *line);
 t_lst				*create_elem(char *map);
 int					fill_map(t_lst *fig, char ***map, int side_len);
 int					valid_check(char *map);
+int					check_space(char **map, t_lst *tetr);
 char				**remove_fig(char **map, char sym);
 char				**write_fig(char **map, char **tetr, int *cor);
 char				*del_empty_line(char *line);

@@ -6,21 +6,21 @@
 #    By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/11 16:33:54 by dnightwi          #+#    #+#              #
-#    Updated: 2019/06/11 16:33:59 by dnightwi         ###   ########.fr        #
+#    Updated: 2019/06/13 16:49:57 by rsticks          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OUT = fillit
+NAME = fillit
 SRCS = srcs/*.c
 HEAD = include/
 MYLIB = libft/
 
-all: $(OUT)
-$(OUT):
+all: $(NAME)
+$(NAME):
 	make -C $(MYLIB)
-	gcc -Wall -Wextra -Werror $(SRCS) -I $(HEAD) -L $(MYLIB) -lft -o $(OUT)
+	gcc -Wall -Wextra -Werror $(SRCS) -I $(HEAD) -L $(MYLIB) -lft -o $(NAME)
 clean:
 	make fclean -C $(MYLIB)
 fclean: clean
-	rm -rf $(OUT)
+	rm -rf $(NAME)
 re: fclean all

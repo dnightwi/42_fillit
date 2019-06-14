@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fill.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/11 15:26:12 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/06/11 15:26:15 by dnightwi         ###   ########.fr       */
+/*   Updated: 2019/06/13 18:06:21 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**write_fig(char **map, char **tetr, int *cor)
+char			**write_fig(char **map, char **tetr, int *cor)
 {
 	int tmp;
 	int	i;
@@ -41,7 +41,7 @@ char	**write_fig(char **map, char **tetr, int *cor)
 	return (map);
 }
 
-char	**remove_fig(char **map, char sym)
+char			**remove_fig(char **map, char sym)
 {
 	int	i;
 	int	j;
@@ -59,4 +59,57 @@ char	**remove_fig(char **map, char sym)
 		i++;
 	}
 	return (map);
+}
+
+static t_lst	*go_lst(char **map, t_lst *tetr)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == tetr->sym)
+			{
+				tetr = tetr->next;
+				i = 0;
+				j = 0;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (tetr);
+}
+
+int				check_space(char **map, t_lst *fig)
+{
+	int		i;
+	int		j;
+	int		count;
+	int		count_lst;
+	t_lst	*tetr;
+
+	i = 0;
+	count = 0;
+	count_lst = 0;
+	tetr = fig;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j++])
+			if (map[i][j] == '.')
+				count++;
+		i++;
+	}
+	tetr = go_lst(map, tetr);
+	while (tetr->next)
+	{
+		count_lst++;
+		tetr = tetr->next;
+	}
+	return (count_lst * 4 > count);
 }

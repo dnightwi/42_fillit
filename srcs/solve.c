@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_map.c                                         :+:      :+:    :+:   */
+/*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rsticks <rsticks@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 16:31:45 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/06/05 18:57:52 by rsticks          ###   ########.fr       */
+/*   Updated: 2019/06/13 18:06:15 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ int			fill_map(t_lst *fig, char ***map, int side_len)
 				cor[1] = 0;
 				cor[0]++;
 			}
-			if (cor[0] >= side_len - 1 && cor[1] >= side_len - 1)
+			if ((cor[0] >= side_len - 1 && cor[1] >= side_len - 1)
+			|| check_space(*map, fig))
 				return (1);
 			*map = remove_fig(*map, fig->sym);
 		}

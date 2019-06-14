@@ -6,7 +6,7 @@
 /*   By: dnightwi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 16:52:28 by dnightwi          #+#    #+#             */
-/*   Updated: 2019/05/06 16:52:30 by dnightwi         ###   ########.fr       */
+/*   Updated: 2019/06/13 16:46:17 by rsticks          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,26 +98,26 @@ t_lst		*op_wr(char *file, char *line)
 	t_lst	*map;
 	t_lst	*tmp;
 	char	string[20];
-	int		i;
-	int		j;
+	int		arr[2];
 
 	if (get_next_line(open(file, O_RDONLY), &line, &map, &tmp))
 		return (NULL);
-	j = 0;
-	while (line[j])
+	arr[1] = 0;
+	while (line[arr[1]])
 	{
-		i = 0;
-		while (i < 20)
-			string[i++] = line[j++];
-		string[i] = '\0';
+		arr[0] = 0;
+		while (arr[0] < 20)
+			string[arr[0]++] = line[arr[1]++];
+		string[arr[0]] = '\0';
 		if (check_figure(string) || !(valid_check(string)))
 			return (NULL);
 		map->next = create_elem(change_sym(string));
 		map = map->next;
-		if (line[j++] == '\0')
+		if (line[arr[1]++] == '\0')
 			break ;
 	}
 	free(line);
-	tmp = tmp->next;
-	return (tmp);
+	map = tmp->next;
+	free(tmp);
+	return (map);
 }
